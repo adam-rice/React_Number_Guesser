@@ -1,9 +1,34 @@
+@import "mixins";
+@import "variables";
+
 body {
-  background-color: #DADADA;
+  background-color: $prim-color;
   color: #212121;
   font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
   text-rendering: optimizeLegibility;
+  text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0.02em;
+}
+
+.input-field {
+  text-indent: 8px;
+  outline-color: $sec-color;
+  @include size(25px, 200px)
+}
+
+input {
+  margin: 10px;
+}
+
+.control {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.reset-btn {
+  display: block;
+  margin: 0 auto;
 }
