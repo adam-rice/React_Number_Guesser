@@ -9,29 +9,36 @@ export default class Application extends Component {
     super();
     this.state = {
       mysteryNumber: '',
-      numberGuessed: '',
+      guess: '',
       lastNumberGuessed: '#',
       instructions: 'Please guess a number between 1-100',
       results: 'Good luck!'
     };
-    //generateMysteryNumber
-    //console log
+    this.generateMysteryNumber();
+    console.log(this.state.mysteryNumber);
   }
 
   generateMysteryNumber() {
     this.state.mysteryNumber = Math.floor((Math.random() * 100) + 1);
   }
 
+  handleChange(e) {
+    this.setState({guess: parseInt(e.target.value)})
+  }
+
   render() {
     return (
       <div>
-        <h1>{this.props.title}</h1>
+        <h1 tabIndex='0'>{this.props.title}</h1>
         <Instructions
           lastNumberGuessed={this.state.lastNumberGuessed}
           instructions={this.state.instructions}
           results={this.state.results}
         />
-        <Input />
+        <Input
+          handleChange={this.handleChange.bind(this)}
+          guess={this.state.guess}
+        />
         <Controls />
       </div>
     )
