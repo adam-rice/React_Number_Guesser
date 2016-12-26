@@ -114,6 +114,7 @@ export default class Application extends Component {
           submit={this.submitGuess.bind(this)}
           reset={this.resetGame.bind(this)}
           guess={this.state.guess}
+          lastNumberGuessed={this.state.lastNumberGuessed}
         />
       </div>
     )

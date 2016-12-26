@@ -1,15 +1,9 @@
 /*jshint esversion: 6 */
-import React, { Component } from 'react';
+import React from 'react';
+import enableClearBtn from '../helpers/enableClearBtn';
+import enableResetBtn from '../helpers/enableResetBtn';
 
-export default class Controls extends Component {
-  enableClearBtn() {
-    if (this.props.guess === '' || this.props.guess === null) {
-      return true
-    } else return false
-  }
-
-  render() {
-  const { clear, submit, reset } = this.props;
+const Controls = ({ clear, submit, reset, guess, lastNumberGuessed }) => {
   return (
     <div>
       <input
@@ -23,16 +17,17 @@ export default class Controls extends Component {
         type='button'
         value='Clear'
         onClick={clear}
-        disabled={this.enableClearBtn()}
+        disabled={enableClearBtn(guess)}
       />
       <input
         className='reset-btn control'
         type='button'
         value='Reset Game'
         onClick={reset}
-        disabled
+        disabled={enableResetBtn(lastNumberGuessed)}
       />
     </div>
   );
-  };
 }
+
+export default Controls;
