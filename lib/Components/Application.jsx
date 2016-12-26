@@ -32,10 +32,16 @@ export default class Application extends Component {
   }
 
   submitGuess() {
-    this.displayGuessedNumber(this.state.guess);
-    if (this.state.guess < this.state.mysteryNumber) {
+    let guess = this.state.guess
+    let mysteryNumber = this.state.mysteryNumber
+    this.displayGuessedNumber(guess);
+    if (isNaN(this.state.guess)) {
+      this.NaNGuessed();
+    } else if (guess > 100 || guess < 1) {
+      this.outsideRange();
+    } else if (guess < mysteryNumber) {
       this.lowGuess();
-    } else if (this.state.guess > this.state.mysteryNumber) {
+    } else if (guess > mysteryNumber) {
       this.highGuess();
     } else {
       this.correctGuess();
@@ -66,6 +72,16 @@ export default class Application extends Component {
 
   setInstructionsMessage(message) {
     this.setState({instructions: message})
+  }
+
+  NaNGuessed() {
+    this.setResultsMessage('Please guess a number');
+    this.displayGuessedNumber('?');
+  }
+
+  outsideRange() {
+    this.setResultsMessage('You may only guess between 1-100');
+    this.displayGuessedNumber('0');
   }
 
   resetGame() {
