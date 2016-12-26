@@ -23,7 +23,11 @@ export default class Application extends Component {
   }
 
   handleChange(e) {
-    this.setState({guess: parseInt(e.target.value)})
+    this.setState({guess: parseInt(e.target.value)});
+  }
+
+  clearInput() {
+    this.setState({guess: ''});
   }
 
   render() {
@@ -39,7 +43,9 @@ export default class Application extends Component {
           handleChange={this.handleChange.bind(this)}
           guess={this.state.guess}
         />
-        <Controls />
+        <Controls
+          clear={this.clearInput.bind(this)}
+        />
       </div>
     )
   }
