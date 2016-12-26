@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Instructions from './Instructions';
 import Input from './Input';
 import Controls from './Controls';
+import randomNumber from '../helpers/random-number';
 
 export default class Application extends Component {
   constructor() {
@@ -19,7 +20,7 @@ export default class Application extends Component {
   }
 
   generateMysteryNumber() {
-    this.state.mysteryNumber = Math.floor((Math.random() * 100) + 1);
+    this.state.mysteryNumber = randomNumber();
   }
 
   handleChange(e) {
@@ -31,6 +32,7 @@ export default class Application extends Component {
   }
 
   submitGuess() {
+    this.displayGuessedNumber(this.state.guess);
     if (this.state.guess < this.state.mysteryNumber) {
       this.lowGuess();
     } else if (this.state.guess > this.state.mysteryNumber) {
@@ -39,6 +41,10 @@ export default class Application extends Component {
       this.correctGuess();
     }
     this.clearInput();
+  }
+
+  displayGuessedNumber(number) {
+    this.setState({lastNumberGuessed: number})
   }
 
   lowGuess() {
@@ -50,11 +56,16 @@ export default class Application extends Component {
   }
 
   correctGuess() {
-    //
+    this.setInstructionsMessage('Your guess is correct!');
+    this.setResultsMessage('Click Reset Game to play again.');
   }
 
   setResultsMessage(message) {
     this.setState({results: message});
+  }
+
+  setInstructionsMessage(message) {
+    this.setState({instructions: message})
   }
 
   resetGame() {
@@ -90,4 +101,5 @@ export default class Application extends Component {
       </div>
     )
   }
+
 }
