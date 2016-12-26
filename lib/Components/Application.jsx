@@ -32,46 +32,35 @@ export default class Application extends Component {
   }
 
   submitGuess() {
-    let guess = this.state.guess
-    let mysteryNumber = this.state.mysteryNumber
+    const guess = this.state.guess
+    const mysteryNumber = this.state.mysteryNumber
     this.displayGuessedNumber(guess);
-    if (isNaN(this.state.guess)) {
+    if (isNaN(guess) || guess === '') {
       this.NaNGuessed();
     } else if (guess > 100 || guess < 1) {
       this.outsideRange();
     } else if (guess < mysteryNumber) {
-      this.lowGuess();
+      this.incorrectGuess('low', 'higher');
     } else if (guess > mysteryNumber) {
-      this.highGuess();
+      this.incorrectGuess('high', 'lower');
     } else {
       this.correctGuess();
     }
     this.clearInput();
   }
 
-  displayGuessedNumber(number) {
-    this.setState({lastNumberGuessed: number})
-  }
-
-  lowGuess() {
-    this.setResultsMessage('Sorry, that guess is too low. Try a higher number.');
-  }
-
-  highGuess() {
-    this.setResultsMessage('Sorry, that guess is too high. Try a lower number.')
+  incorrectGuess(userGuess, advice) {
+    let message = 'Sorry, that guess is too ' + userGuess + '. Try a ' + advice + ' number.';
+    this.setResultsMessage(message);
   }
 
   correctGuess() {
-    this.setInstructionsMessage('Your guess is correct!');
+    this.setState({instructions: 'Your guess is correct!'});
     this.setResultsMessage('Click Reset Game to play again.');
   }
 
   setResultsMessage(message) {
     this.setState({results: message});
-  }
-
-  setInstructionsMessage(message) {
-    this.setState({instructions: message})
   }
 
   NaNGuessed() {
@@ -82,6 +71,10 @@ export default class Application extends Component {
   outsideRange() {
     this.setResultsMessage('You may only guess between 1-100');
     this.displayGuessedNumber('0');
+  }
+
+  displayGuessedNumber(number) {
+    this.setState({lastNumberGuessed: number})
   }
 
   resetGame() {
@@ -119,5 +112,4 @@ export default class Application extends Component {
       </div>
     )
   }
-
 }

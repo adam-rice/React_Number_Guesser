@@ -3,18 +3,18 @@
 
 body {
   background-color: $prim-color;
-  color: #212121;
-  font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
-  text-rendering: optimizeLegibility;
-  text-align: center;
+  color:            #212121;
+  font-family:      $font;
+  text-rendering:   optimizeLegibility;
+  text-align:       center;
+  letter-spacing:   0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.02em;
 }
 
 .input-field {
-  text-indent: 8px;
-  outline-color: $sec-color;
+  text-indent:    8px;
+  outline-color:  $sec-color;
   @include size(25px, 200px)
 }
 
@@ -29,6 +29,6 @@ input {
 }
 
 .reset-btn {
-  display: block;
-  margin: 0 auto;
+  display:  block;
+  margin:   0 auto;
 }
