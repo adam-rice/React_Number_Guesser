@@ -1,4 +1,4 @@
-# Number Guesser built in React.js
+# Number Guesser built with React.js
 
 ### In Development...
 

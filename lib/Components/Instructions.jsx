@@ -1,12 +1,12 @@
 /*jshint esversion: 6 */
 import React from 'react';
 
-const Instructions = () => {
+const Instructions = ({ instructions, lastNumberGuessed, results }) => {
   return (
     <div>
-      <p>Please guess a number between 1-100</p>
-      <h2>#</h2>
-      <p>Good luck!</p>
+      <p>{instructions}</p>
+      <h2>{lastNumberGuessed}</h2>
+      <p>{results}</p>
     </div>
   );
 };
