@@ -30,6 +30,29 @@ export default class Application extends Component {
     this.setState({guess: ''});
   }
 
+  submitGuess() {
+    if (this.state.guess < this.state.mysteryNumber) {
+      alert('Too low')
+    } else if (this.state.guess > this.state.mysteryNumber) {
+      alert('high')
+    } else {
+      alert('correct')
+    }
+    this.clearInput();
+  }
+
+  resetGame() {
+    this.setState({
+      guess: '',
+      lastNumberGuessed: '#',
+      instructions: 'Please guess a number between 1-100',
+      results: 'Good luck!'
+      }, () => {
+        this.generateMysteryNumber();
+        console.log(this.state.mysteryNumber);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -45,6 +68,8 @@ export default class Application extends Component {
         />
         <Controls
           clear={this.clearInput.bind(this)}
+          submit={this.submitGuess.bind(this)}
+          reset={this.resetGame.bind(this)}
         />
       </div>
     )

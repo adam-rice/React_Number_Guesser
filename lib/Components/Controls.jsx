@@ -1,13 +1,14 @@
 /*jshint esversion: 6 */
 import React from 'react';
 
-const Controls = ({clear}) => {
+const Controls = ({ clear, submit, reset }) => {
   return (
     <div>
       <input
         className='control'
         type='button'
         value='Guess'
+        onClick={submit}
       />
       <input
         className='control'
@@ -19,6 +20,7 @@ const Controls = ({clear}) => {
         className='reset-btn control'
         type='button'
         value='Reset Game'
+        onClick={reset}
       />
     </div>
   );
