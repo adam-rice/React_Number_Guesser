@@ -32,13 +32,29 @@ export default class Application extends Component {
 
   submitGuess() {
     if (this.state.guess < this.state.mysteryNumber) {
-      alert('Too low')
+      this.lowGuess();
     } else if (this.state.guess > this.state.mysteryNumber) {
-      alert('high')
+      this.highGuess();
     } else {
-      alert('correct')
+      this.correctGuess();
     }
     this.clearInput();
+  }
+
+  lowGuess() {
+    this.setResultsMessage('Sorry, that guess is too low. Try a higher number.');
+  }
+
+  highGuess() {
+    this.setResultsMessage('Sorry, that guess is too high. Try a lower number.')
+  }
+
+  correctGuess() {
+    //
+  }
+
+  setResultsMessage(message) {
+    this.setState({results: message});
   }
 
   resetGame() {
