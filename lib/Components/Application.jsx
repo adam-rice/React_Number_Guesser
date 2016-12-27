@@ -13,10 +13,10 @@ export default class Application extends Component {
       guess: '',
       lastNumberGuessed: '#',
       instructions: 'Please guess a number between 1-100',
-      results: 'Good luck!'
+      results: 'Good luck!',
+      inputFieldLength: 0
     };
     this.generateMysteryNumber();
-    console.log(this.state.mysteryNumber);
   }
 
   generateMysteryNumber() {
@@ -24,11 +24,15 @@ export default class Application extends Component {
   }
 
   handleChange(e) {
-    this.setState({guess: parseInt(e.target.value)});
+    const input = document.querySelector('.input-field');
+    this.setState({
+      guess: parseInt(e.target.value),
+      inputFieldLength: input.value.length
+    });
   }
 
   clearInput() {
-    this.setState({guess: ''});
+    this.setState({guess: '', inputFieldLength: 0});
   }
 
   submitGuess() {
@@ -49,13 +53,16 @@ export default class Application extends Component {
     this.clearInput();
   }
 
-  incorrectGuess(userGuess, advice) {
-    let message = 'Sorry, that guess is too ' + userGuess + '. Try a ' + advice + ' number.';
+  incorrectGuess(issue, advice) {
+    let message = 'Sorry, that guess is too ' + issue + '. Try a ' + advice + ' number.';
     this.setResultsMessage(message);
   }
 
   correctGuess() {
-    this.setState({instructions: 'Your guess is correct!'});
+    this.setState({
+      instructions: 'Your guess is correct!',
+      inputFieldLength: 0
+    });
     this.setResultsMessage('Click Reset Game to play again.');
   }
 
@@ -82,10 +89,10 @@ export default class Application extends Component {
       guess: '',
       lastNumberGuessed: '#',
       instructions: 'Please guess a number between 1-100',
-      results: 'Good luck!'
+      results: 'Good luck!',
+      inputFieldLength: 0
       }, () => {
         this.generateMysteryNumber();
-        console.log(this.state.mysteryNumber);
     });
   }
 
@@ -106,8 +113,8 @@ export default class Application extends Component {
           clear={this.clearInput.bind(this)}
           submit={this.submitGuess.bind(this)}
           reset={this.resetGame.bind(this)}
-          guess={this.state.guess}
-          lastNumberGuessed={this.state.lastNumberGuessed}
+          results={this.state.results}
+          input={this.state.inputFieldLength}
         />
       </div>
     )

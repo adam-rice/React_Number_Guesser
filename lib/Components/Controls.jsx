@@ -3,7 +3,7 @@ import React from 'react';
 import enableClearBtn from '../helpers/enableClearBtn';
 import enableResetBtn from '../helpers/enableResetBtn';
 
-const Controls = ({ clear, submit, reset, guess, lastNumberGuessed }) => {
+const Controls = ({ clear, submit, reset, results, input }) => {
   return (
     <div>
       <input
@@ -17,14 +17,14 @@ const Controls = ({ clear, submit, reset, guess, lastNumberGuessed }) => {
         type='button'
         value='Clear'
         onClick={clear}
-        disabled={enableClearBtn(guess)}
+        disabled={enableClearBtn(input)}
       />
       <input
         className='reset-btn control'
         type='button'
         value='Reset Game'
         onClick={reset}
-        disabled={enableResetBtn(lastNumberGuessed)}
+        disabled={enableResetBtn(results)}
       />
     </div>
   );
