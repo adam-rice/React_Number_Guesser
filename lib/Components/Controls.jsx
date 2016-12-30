@@ -2,6 +2,7 @@
 import React from 'react';
 import enableClearBtn from '../helpers/enableClearBtn';
 import enableResetBtn from '../helpers/enableResetBtn';
+import enableGuessBtn from '../helpers/enableGuessBtn';
 
 const Controls = ({ clear, submit, reset, results, input }) => {
   return (
@@ -11,6 +12,7 @@ const Controls = ({ clear, submit, reset, results, input }) => {
         type='button'
         value='Guess'
         onClick={submit}
+        disabled={enableGuessBtn(results)}
       />
       <input
         className='control'
