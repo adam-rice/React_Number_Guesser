@@ -35,6 +35,18 @@ export default class Application extends Component {
     this.setState({guess: '', inputFieldLength: 0});
   }
 
+  resetGame() {
+    this.setState({
+      guess: '',
+      lastNumberGuessed: '#',
+      instructions: 'Please guess a number between 1-100',
+      results: 'Good luck!',
+      inputFieldLength: 0
+    }, () => {
+      this.generateMysteryNumber();
+    });
+  }
+
   submitGuess() {
     const guess = this.state.guess
     const mysteryNumber = this.state.mysteryNumber
@@ -84,18 +96,6 @@ export default class Application extends Component {
     this.setState({lastNumberGuessed: number})
   }
 
-  resetGame() {
-    this.setState({
-      guess: '',
-      lastNumberGuessed: '#',
-      instructions: 'Please guess a number between 1-100',
-      results: 'Good luck!',
-      inputFieldLength: 0
-      }, () => {
-        this.generateMysteryNumber();
-    });
-  }
-
   render() {
     return (
       <div>
@@ -106,7 +106,7 @@ export default class Application extends Component {
           results={this.state.results}
         />
         <Input
-          handleChange={this.handleChange.bind(this)}
+          onChange={this.handleChange.bind(this)}
           guess={this.state.guess}
         />
         <Controls

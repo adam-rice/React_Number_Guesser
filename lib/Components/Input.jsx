@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import React from 'react';
 
-const Input = ({ handleChange, guess }) => {
+const Input = ({ onChange, guess }) => {
   return (
     <input
       className='input-field'
@@ -9,7 +9,7 @@ const Input = ({ handleChange, guess }) => {
       placeholder='Your best guess'
       min='1'
       max='100'
-      onChange={handleChange}
+      onChange={onChange}
       value={guess}
     />
   );
