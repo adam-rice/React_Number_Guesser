@@ -16,6 +16,12 @@ export default class Application extends Component {
       results: 'Good luck!',
       inputFieldLength: 0
     };
+
+    this.clearInput   = this.clearInput.bind(this);
+    this.submitGuess  = this.submitGuess.bind(this);
+    this.resetGame    = this.resetGame.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
     this.generateMysteryNumber();
   }
 
@@ -25,6 +31,7 @@ export default class Application extends Component {
 
   handleChange(e) {
     const input = document.querySelector('.input-field');
+    
     this.setState({
       guess: parseInt(e.target.value),
       inputFieldLength: input.value.length
@@ -48,8 +55,9 @@ export default class Application extends Component {
   }
 
   submitGuess() {
-    const guess = this.state.guess
-    const mysteryNumber = this.state.mysteryNumber
+    const guess         = this.state.guess;
+    const mysteryNumber = this.state.mysteryNumber;
+
     this.displayGuessedNumber(guess);
     if (isNaN(guess) || guess === '') {
       this.NaNGuessed();
@@ -106,13 +114,13 @@ export default class Application extends Component {
           results={this.state.results}
         />
         <Input
-          onChange={this.handleChange.bind(this)}
+          onChange={this.handleChange}
           guess={this.state.guess}
         />
         <Controls
-          clear={this.clearInput.bind(this)}
-          submit={this.submitGuess.bind(this)}
-          reset={this.resetGame.bind(this)}
+          clear={this.clearInput}
+          submit={this.submitGuess}
+          reset={this.resetGame}
           results={this.state.results}
           input={this.state.inputFieldLength}
         />
