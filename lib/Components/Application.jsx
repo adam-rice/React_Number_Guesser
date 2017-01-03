@@ -1,9 +1,9 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import Instructions from './Instructions';
-import Input from './Input';
-import Controls from './Controls';
-import randomNumber from '../helpers/random-number';
+import Instructions from 'Instructions';
+import Input from 'Input';
+import Controls from 'Controls';
+import randomNumber from 'randomNumber';
 
 export default class Application extends Component {
   constructor() {

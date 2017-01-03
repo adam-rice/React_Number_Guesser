@@ -1,8 +1,8 @@
 /*jshint esversion: 6 */
 import React from 'react';
-import enableClearBtn from '../helpers/enableClearBtn';
-import enableResetBtn from '../helpers/enableResetBtn';
-import enableGuessBtn from '../helpers/enableGuessBtn';
+import enableClearBtn from 'enableClearBtn';
+import enableResetBtn from 'enableResetBtn';
+import enableGuessBtn from 'enableGuessBtn';
 
 const Controls = ({ clear, submit, reset, results, input }) => {
   return (

@@ -22,6 +22,18 @@ module.exports = {
     ],
   },
   resolve: {
+    root: __dirname,
+    alias: {
+      Application: 'lib/Components/Application',
+      Controls: 'lib/Components/Controls.jsx',
+      Input: 'lib/Components/Input',
+      Instructions: 'lib/Components/Instructions',
+      Styles: 'lib/CSS/styles',
+      randomNumber: 'lib/helpers/random-number',
+      enableClearBtn: 'lib/helpers/enableClearBtn',
+      enableResetBtn: 'lib/helpers/enableResetBtn',
+      enableGuessBtn: 'lib/helpers/enableGuessBtn'
+    },
     extensions: ['', '.js', '.jsx', '.json', '.scss', '.css'],
   },
 };
